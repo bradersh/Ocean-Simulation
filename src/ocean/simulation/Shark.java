@@ -57,11 +57,10 @@ public class Shark extends Fish{
             if(breedingSpace != null)
             {
                 if((RandomGenerator.getRandom().nextInt(100)+1) <= ModelConstants.BREEDING_PROBABILITY_SHARK)
-                {
-                    System.out.println("breeding bitch");
-                    field.place(new Shark(breedingSpace.getRow(), breedingSpace.getCol(),0), breedingSpace); 
-                    return field.getObjectAt(breedingSpace);
-                }
+                    {
+                        field.place(new Shark(breedingSpace.getRow(), breedingSpace.getCol(),0), breedingSpace); 
+                        return field.getObjectAt(breedingSpace);
+                    }
             }
         }
         return null;

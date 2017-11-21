@@ -48,7 +48,7 @@ public class OceanSimulation {
         oceanSimulation = new OceanSimulation(0,0);
         populate(); 
         simulatorView.showStatus(0,field);
-        simulate(1000); 
+        simulate(10000); 
     }
     
     private static void populate()

@@ -25,6 +25,7 @@ public class Plankton extends Creature{
         
         if(age >= ModelConstants.PLANKTON_MAX_AGE)
         {
+                                    System.out.println("die");
             die(field);
         }
         return super.act(field);

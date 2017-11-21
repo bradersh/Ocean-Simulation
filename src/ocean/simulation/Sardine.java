@@ -58,7 +58,6 @@ public class Sardine extends Fish{
             {
                 if((RandomGenerator.getRandom().nextInt(100)+1) <= ModelConstants.BREEDING_PROBABILITY_SARDINE)
                     {
-                        System.out.println("a breeding bitch");
                         field.place(new Sardine(breedingSpace.getRow(), breedingSpace.getCol(),0), breedingSpace); 
                         return field.getObjectAt(breedingSpace);
                     }
