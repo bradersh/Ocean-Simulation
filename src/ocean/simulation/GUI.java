@@ -144,7 +144,9 @@ public class GUI {
 
     public void runSimulation() {
         ModelConstants.SetConstants(Integer.parseInt(Depth.getText()), Integer.parseInt(Width.getText()), Integer.parseInt(PlanktonProb.getText()), Integer.parseInt(SardineProb.getText()), Integer.parseInt(SharkProb.getText()), Integer.parseInt(SharkMaxAge.getText()), Integer.parseInt(SardineMaxAge.getText()), Integer.parseInt(PlanktonMaxAge.getText()), Integer.parseInt(PlanktonNValue.getText()), Integer.parseInt(SardineNValue.getText()), Integer.parseInt(Seed.getText()), Integer.parseInt(SharkBreedProb.getText()), Integer.parseInt(SardineBreedProb.getText()), Integer.parseInt(PlanktonBreedProb.getText()), Integer.parseInt(SharkMinBreedAge.getText()), Integer.parseInt(SardineMinBreedAge.getText()), Integer.parseInt(PlanktonMinBreedAge.getText()), Integer.parseInt(Simulation.getText()));
+        parameter.setVisible(false);
         OceanSimulation.run();
+        parameter.setVisible(true);
     }
 
     public static void main(String args[]) {
