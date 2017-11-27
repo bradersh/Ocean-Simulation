@@ -14,6 +14,8 @@ public class Plankton extends Creature {
 
     }
 
+    
+    // A method which removes the plankton if its age has surpassed the defined max age
     public Creature act(Field field) {
 
         if (age >= ModelConstants.PLANKTON_MAX_AGE) {
@@ -22,6 +24,12 @@ public class Plankton extends Creature {
         return super.act(field);
     }
 
+    /**
+     * Tries and creates a new plankton
+     * @param location plankton location
+     * @param field the field
+     * @return new plankton if made
+     */
     protected Creature breed(Location location, Field field) {
         Location breedingSpace = field.freeAdjacentLocation(location);
         if (breedingSpace != null) {

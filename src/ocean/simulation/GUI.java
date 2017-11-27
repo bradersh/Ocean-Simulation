@@ -2,51 +2,52 @@ package ocean.simulation;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 
 /**
  *
  * @author Bradersh
  */
-public class GUI {
+public class GUI extends JFrame {
 
-    private JFrame parameter;
-    private JTextField PlanktonProb = new JTextField(5);
-    private JTextField SharkProb = new JTextField(5);
-    private JTextField SardineProb = new JTextField(5);
-    private JTextField PlanktonBreedProb = new JTextField(5);
-    private JTextField SharkBreedProb = new JTextField(5);
-    private JTextField SardineBreedProb = new JTextField(5);
-    private JTextField PlanktonNValue = new JTextField(5);
-    private JTextField SardineNValue = new JTextField(5);
-    private JTextField SharkMaxAge = new JTextField(5);
-    private JTextField PlanktonMaxAge = new JTextField(5);
-    private JTextField SardineMaxAge = new JTextField(5);
-    private JTextField SharkMinBreedAge = new JTextField(5);
-    private JTextField PlanktonMinBreedAge = new JTextField(5);
-    private JTextField SardineMinBreedAge = new JTextField(5);
-    private JTextField Seed = new JTextField(5);
-    private JTextField Depth = new JTextField(5);
-    private JTextField Width = new JTextField(5);
-    private JTextField Simulation = new JTextField(5);
-    private JLabel Shark;
-    private JLabel Sardine;
-    private JLabel Plankton;
-    private JLabel ProbLabel;
-    private JLabel BreedProbLabel;
-    private JLabel NValueLabel;
-    private JLabel MaxAgeLabel;
-    private JLabel MinBreedAgeLabel;
-    private JLabel SeedLabel;
-    private JLabel DepthLabel;
-    private JLabel WidthLabel;
-    private JLabel SimulationLabel;
-    private JButton Button;
+    public static boolean run = false;
+    //GUI compoenents
+    private final JTextField PlanktonProb = new JTextField(5);
+    private final JTextField SharkProb = new JTextField(5);
+    private final JTextField SardineProb = new JTextField(5);
+    private final JTextField PlanktonBreedProb = new JTextField(5);
+    private final JTextField SharkBreedProb = new JTextField(5);
+    private final JTextField SardineBreedProb = new JTextField(5);
+    private final JTextField PlanktonNValue = new JTextField(5);
+    private final JTextField SardineNValue = new JTextField(5);
+    private final JTextField SharkMaxAge = new JTextField(5);
+    private final JTextField PlanktonMaxAge = new JTextField(5);
+    private final JTextField SardineMaxAge = new JTextField(5);
+    private final JTextField SharkMinBreedAge = new JTextField(5);
+    private final JTextField PlanktonMinBreedAge = new JTextField(5);
+    private final JTextField SardineMinBreedAge = new JTextField(5);
+    private final JTextField Seed = new JTextField(5);
+    private final JTextField Depth = new JTextField(5);
+    private final JTextField Width = new JTextField(5);
+    private final JTextField Simulation = new JTextField(5);
+    private final JLabel Shark;
+    private final JLabel Sardine;
+    private final JLabel Plankton;
+    private final JLabel ProbLabel;
+    private final JLabel BreedProbLabel;
+    private final JLabel NValueLabel;
+    private final JLabel MaxAgeLabel;
+    private final JLabel MinBreedAgeLabel;
+    private final JLabel SeedLabel;
+    private final JLabel DepthLabel;
+    private final JLabel WidthLabel;
+    private final JLabel SimulationLabel;
+    private final JButton Button;
 
     public GUI() {
         //Step 1 Create Components
@@ -64,7 +65,7 @@ public class GUI {
         SimulationLabel = new JLabel("Simulation Length", SwingConstants.CENTER);
         Button = new JButton("Run");
 
-        //Set Properties
+        //Step 2 Set Properties
         PlanktonProb.setText("" + ModelConstants.p);
         SharkProb.setText("" + ModelConstants.sh);
         SardineProb.setText("" + ModelConstants.sa);
@@ -84,72 +85,71 @@ public class GUI {
         Width.setText("" + ModelConstants.DEFAULT_WIDTH);
         Simulation.setText("" + ModelConstants.STEPS);
 
-        //Create Containers
-        parameter = new JFrame("Set Parameters");
-        //Specify Layout manager
-        parameter.setLayout(new GridLayout(6, 5, 10, 10));
-        //Add components to container 
-        parameter.add(new JLabel());
-        parameter.add(ProbLabel);
-        parameter.add(BreedProbLabel);
-        parameter.add(MaxAgeLabel);
-        parameter.add(MinBreedAgeLabel);
-        parameter.add(NValueLabel);
+        //Step 3 Specify Layout manager
+        setLayout(new GridLayout(6, 5, 10, 10));
 
-        parameter.add(Plankton);
-        parameter.add(PlanktonProb);
-        parameter.add(PlanktonBreedProb);
-        parameter.add(PlanktonMaxAge);
-        parameter.add(PlanktonMinBreedAge);
-        parameter.add(PlanktonNValue);
+        //Step 4 Add components to container 
+        add(new JLabel());
+        add(ProbLabel);
+        add(BreedProbLabel);
+        add(MaxAgeLabel);
+        add(MinBreedAgeLabel);
+        add(NValueLabel);
 
-        parameter.add(Sardine);
-        parameter.add(SardineProb);
-        parameter.add(SardineBreedProb);
-        parameter.add(SardineMaxAge);
-        parameter.add(SardineMinBreedAge);
-        parameter.add(SardineNValue);
+        add(Plankton);
+        add(PlanktonProb);
+        add(PlanktonBreedProb);
+        add(PlanktonMaxAge);
+        add(PlanktonMinBreedAge);
+        add(PlanktonNValue);
 
-        parameter.add(Shark);
-        parameter.add(SharkProb);
-        parameter.add(SharkBreedProb);
-        parameter.add(SharkMaxAge);
-        parameter.add(SharkMinBreedAge);
-        parameter.add(new JLabel());
+        add(Sardine);
+        add(SardineProb);
+        add(SardineBreedProb);
+        add(SardineMaxAge);
+        add(SardineMinBreedAge);
+        add(SardineNValue);
 
-        parameter.add(new JLabel());
-        parameter.add(SeedLabel);
-        parameter.add(DepthLabel);
-        parameter.add(WidthLabel);
-        parameter.add(SimulationLabel);
-        parameter.add(new JLabel());
-        parameter.add(new JLabel());
-        parameter.add(Seed);
-        parameter.add(Depth);
-        parameter.add(Width);
-        parameter.add(Simulation);
-        parameter.add(Button);
+        add(Shark);
+        add(SharkProb);
+        add(SharkBreedProb);
+        add(SharkMaxAge);
+        add(SharkMinBreedAge);
+        add(new JLabel());
 
-        //handle events
-        Button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                runSimulation();
-            }
+        add(new JLabel());
+        add(SeedLabel);
+        add(DepthLabel);
+        add(WidthLabel);
+        add(SimulationLabel);
+        add(new JLabel());
+        add(new JLabel());
+        add(Seed);
+        add(Depth);
+        add(Width);
+        add(Simulation);
+        add(Button);
+
+        //Step 5 handle events
+        Button.addActionListener((ActionEvent e) -> {
+            setConstants();
         });
 
-        //display GUI
-        parameter.pack();
-        parameter.setVisible(true);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        //Step 6 display GUI
+        pack();
+        setVisible(true);
     }
 
-    public void runSimulation() {
+    public static boolean isRun() {
+        return run;
+    }
+
+    //Sets the model constants values from the gui interface, sets run to true so the simulation can run and hides the gui
+    public void setConstants() {
         ModelConstants.SetConstants(Integer.parseInt(Depth.getText()), Integer.parseInt(Width.getText()), Integer.parseInt(PlanktonProb.getText()), Integer.parseInt(SardineProb.getText()), Integer.parseInt(SharkProb.getText()), Integer.parseInt(SharkMaxAge.getText()), Integer.parseInt(SardineMaxAge.getText()), Integer.parseInt(PlanktonMaxAge.getText()), Integer.parseInt(PlanktonNValue.getText()), Integer.parseInt(SardineNValue.getText()), Integer.parseInt(Seed.getText()), Integer.parseInt(SharkBreedProb.getText()), Integer.parseInt(SardineBreedProb.getText()), Integer.parseInt(PlanktonBreedProb.getText()), Integer.parseInt(SharkMinBreedAge.getText()), Integer.parseInt(SardineMinBreedAge.getText()), Integer.parseInt(PlanktonMinBreedAge.getText()), Integer.parseInt(Simulation.getText()));
-        parameter.setVisible(false);
-        OceanSimulation.run();
-        parameter.setVisible(true);
-    }
-
-    public static void main(String args[]) {
-        GUI gui = new GUI();
+        run = true;
+        setVisible(false);
     }
 }

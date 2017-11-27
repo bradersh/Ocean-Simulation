@@ -135,7 +135,6 @@ public class SimulatorView extends JFrame {
             }
         }
         stats.countFinished();
-
         population.setText(POPULATION_PREFIX + stats.getPopulationDetails(field));
         fieldView.repaint();
     }

@@ -13,9 +13,10 @@ public class Shark extends Fish {
     }
 
     public Shark() {
-
+         
     }
 
+    // A method which removes the shark if its age has surpassed the defined max age
     public Creature act(Field field) {
 
         if (age >= ModelConstants.SHARK_MAX_AGE) {
@@ -24,6 +25,7 @@ public class Shark extends Fish {
         return super.act(field);
     }
 
+    // A method which checks for sardines(food) around the shark. If an instance of sardine is found, removes it, adds food to the shark and moves the shark to that location
     protected Location eat(Location location, Field field) {
 
         Iterator adjacent = field.adjacentLocations(location);
@@ -35,16 +37,16 @@ public class Shark extends Fish {
                 return next;
             }
         }
-
-//        if(field.freeAdjacentLocation(location) == null){
-//            System.out.println("die");
-//            
-//            field.place(null, location);
-//            return null;
-//        }
         return field.freeAdjacentLocation(location);
     }
 
+    /**
+     * Tries and creates a new shark
+     *
+     * @param location sharks location
+     * @param field the field
+     * @return new shark if made
+     */
     protected Creature breed(Location location, Field field) {
         if (age >= ModelConstants.BREEDING_AGE_SHARK) {
             Location breedingSpace = field.freeAdjacentLocation(location);

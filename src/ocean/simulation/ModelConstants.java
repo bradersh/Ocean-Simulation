@@ -6,6 +6,7 @@ package ocean.simulation;
  */
 public class ModelConstants {
 
+    // All the variables for the simulation set with default values 
     public static int DEFAULT_DEPTH = 100;
     public static int DEFAULT_WIDTH = 100;
     public static Plankton PLANKTON = new Plankton();
@@ -30,6 +31,7 @@ public class ModelConstants {
     public static int BREEDING_AGE_PLANKTON = 0;
     public static int STEPS = 1000;
 
+    //The ability to set the constants through the use of the GUI
     public static void SetConstants(int DEFAULT_DEPTH, int DEFAULT_WIDTH, int p, int sa, int sh, int SHARK_MAX_AGE, int SARDINE_MAX_AGE, int PLANKTON_MAX_AGE, int PLANKTON_FOOD_VALUE, int SARDINE_FOOD_VALUE, int RANDOM_SEED, int BREEDING_PROBABILITY_SHARK, int BREEDING_PROBABILITY_SARDINE, int BREEDING_PROBABILITY_PLANKTON, int BREEDING_AGE_SHARK, int BREEDING_AGE_SARDINE, int BREEDING_AGE_PLANKTON, int STEPS) {
         ModelConstants.DEFAULT_DEPTH = DEFAULT_DEPTH;
         ModelConstants.DEFAULT_WIDTH = DEFAULT_WIDTH;

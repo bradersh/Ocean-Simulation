@@ -15,38 +15,49 @@ public class OceanSimulation {
 
     private static Field field;
     private static SimulatorView simulatorView;
-    private static OceanSimulation oceanSimulation;
     private static ArrayList<Creature> creatureList;
     private static int count = ModelConstants.STARTING_STEP;
+    private GUI gui;
 
-    public OceanSimulation(int depth, int width) {
-        if (depth <= 0) {
-            depth = ModelConstants.DEFAULT_DEPTH;
+    public OceanSimulation() {
+        creatureList = new ArrayList<>();
+        run();
+    }
+
+    public static void main(String args[]) {
+        RandomGenerator.initialiseWithSeed(ModelConstants.RANDOM_SEED);
+        OceanSimulation oc = new OceanSimulation();
+    }
+
+    private void run() {
+
+        //Create gui for param setting
+        gui = new GUI();
+
+        //Only continu when gui has set params
+        while (!gui.isRun()) {
+            try {
+                Thread.sleep(0);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(OceanSimulation.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        if (width <= 0) {
-            width = ModelConstants.DEFAULT_WIDTH;
-        }
-        creatureList = new ArrayList<Creature>();
-        field = new Field(depth, width);
-        simulatorView = new SimulatorView(depth, width);
+
+        //Creates everything
+        field = new Field(ModelConstants.DEFAULT_DEPTH, ModelConstants.DEFAULT_WIDTH);
+        simulatorView = new SimulatorView(ModelConstants.DEFAULT_DEPTH, ModelConstants.DEFAULT_WIDTH);
+        simulatorView.setVisible(true);
         simulatorView.setColor(ModelConstants.PLANKTON.getClass(), Color.black);
         simulatorView.setColor(ModelConstants.SARDINE.getClass(), Color.green);
         simulatorView.setColor(ModelConstants.SHARK.getClass(), Color.blue);
-
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void run() {
-        RandomGenerator.initialiseWithSeed(ModelConstants.RANDOM_SEED);
-        oceanSimulation = new OceanSimulation(ModelConstants.DEFAULT_DEPTH, ModelConstants.DEFAULT_WIDTH);
         populate();
-        simulatorView.showStatus(0, field);
+        simulatorView.showStatus(count, field);
         simulate(ModelConstants.STEPS);
     }
 
     private static void populate() {
+
+        //Use constants, checks to see if random value is above or below set value
         Random rnd = RandomGenerator.getRandom();
         for (int d = 0; d < field.getDepth(); d++) {
             for (int w = 0; w < field.getWidth(); w++) {
@@ -65,10 +76,10 @@ public class OceanSimulation {
         }
     }
 
+    //The method for the simulation itself, shuffles the creature list and runs simulate on step until the count hits the step value
     private static void simulate(int numSteps) {
         for (int i = 0; i < numSteps; i++) {
             if (simulatorView.isViable(field)) {
-                System.out.println(i);
                 try {
                     Thread.sleep(1);
                 } catch (InterruptedException ex) {
@@ -83,6 +94,7 @@ public class OceanSimulation {
         }
     }
 
+    //Runs the step for each creature in the array list
     private static void simulateOneStep() {
         ArrayList<Creature> newCreatures = new ArrayList<Creature>();
         for (Creature c : creatureList) {

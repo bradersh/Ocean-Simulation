@@ -69,7 +69,6 @@ public class LabelledTextArea extends JComponent {
      *
      * public void stateChanged(ChangeEvent e) { if
      * (!slider.getValueIsAdjusting()) { int number = slider.getValue();
-     * label.setText(labelString + nf.format(((double)number/scale))); } }
-	}
+     * label.setText(labelString + nf.format(((double)number/scale))); } } }
      */
 }
