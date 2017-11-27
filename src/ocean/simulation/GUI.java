@@ -135,6 +135,7 @@ public class GUI extends JFrame {
             setConstants();
         });
 
+        //Allows the window to properly close once the exit button is pressed
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         //Step 6 display GUI

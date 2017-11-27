@@ -34,7 +34,7 @@ public class OceanSimulation {
         //Create gui for param setting
         gui = new GUI();
 
-        //Only continu when gui has set params
+        //Only continue when gui has set params
         while (!gui.isRun()) {
             try {
                 Thread.sleep(0);
@@ -81,7 +81,7 @@ public class OceanSimulation {
         for (int i = 0; i < numSteps; i++) {
             if (simulatorView.isViable(field)) {
                 try {
-                    Thread.sleep(1);
+                    Thread.sleep(50);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(OceanSimulation.class.getName()).log(Level.SEVERE, null, ex);
                 }
