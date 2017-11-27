@@ -81,7 +81,7 @@ public class OceanSimulation {
         for (int i = 0; i < numSteps; i++) {
             if (simulatorView.isViable(field)) {
                 try {
-                    Thread.sleep(50);
+                    Thread.sleep(1);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(OceanSimulation.class.getName()).log(Level.SEVERE, null, ex);
                 }
